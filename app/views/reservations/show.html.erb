@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong> Hotel Reservation </strong>
+  <%= @reservation.hotel.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @reservation.hotel.city %>
+</p>
+
+<p>
+  <strong>Number of rooms:</strong>
+  <%= @reservation.number_of_rooms %>
+</p>
+
+<!--<%#= link_to 'Edit', edit_reservation_path(@reservation) %> |-->
+<%= link_to 'Reservation list', reservations_path %>
+<%= link_to 'Search hotel', search_hotels_path %>

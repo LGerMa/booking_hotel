@@ -1,0 +1,71 @@
+<%= form_with(model: reservation, local: true) do |form| %>
+  <% if reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this hotel from being saved:</h2>
+
+      <ul>
+        <% reservation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="three columns">
+      <div class="field">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, required: true %>
+      </div>
+    </div>
+    <div class="three columns">
+      <div class="field">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, required: true %>
+      </div>
+    </div>
+    <div class="three columns">
+      <div class="field">
+        <%= form.label :email %>
+        <%= form.email_field :email, required: true %>
+      </div>
+    </div>
+    <div class="three columns">
+      <div class="field">
+        <%= form.label :phone %>
+        <%= form.phone_field :phone, required: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <div class="field">
+          <label>Number of rooms: <%= @reservation.number_of_rooms %></label>
+        </div>
+      </div>
+      <div class="three columns">
+        <div class="field">
+          <label>Arrival date</label>
+          <label><%= @reservation.arrival_date %></label>
+        </div>
+      </div>
+      <div class="three columns">
+        <div class="field">
+          <label>Departure date</label>
+          <label><%= @reservation.departure_date %></label>
+        </div>
+      </div>
+      <div class="three columns">
+        <h5>Total: <%= @reservation.total %></h5>
+      </div>
+    </div>
+  </div>
+  <div class="hidden-fields">
+    <%= form.hidden_field :hotel_id %>
+    <%= form.hidden_field :number_of_rooms %>
+    <%= form.hidden_field :arrival_date %>
+    <%= form.hidden_field :departure_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :class => "button button-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<p id="notice"><%= @messages[:message] %></p>
+<h1>New reservation</h1>
+
+<div class="row">
+  <div class="columns">
+    <div class="reservation-info">
+      <h3>Reservation hotel information</h3>
+      <p><b>Hotel</b> <%= @hotel.name %></p>
+      <p><b>City</b> <%= @hotel.city %></p>
+      <p><b>Price Per Night</b> <%= @hotel.price %></p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="columns">
+    <div class="reservation-form">
+      <h3>Reservation customer information</h3>
+      <%= render 'form', reservation: @reservation %>
+    </div>
+  </div>
+
+</div>

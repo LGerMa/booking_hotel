@@ -1,0 +1,17 @@
+// Place all the styles related to the Reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.reservation-info {
+  border: 1px solid cadetblue;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.reservation-info p {
+  padding: 0;
+  margin: 0;
+}
+
+.reservation-form {
+  margin-top: 20px;
+}
