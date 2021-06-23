@@ -19,8 +19,6 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'hotwire-rails'
 
-gem 'bootstrap'
-
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

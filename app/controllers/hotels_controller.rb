@@ -57,7 +57,11 @@ class HotelsController < ApplicationController
   end
 
   def search
-    @hotel_available = Hotel.search(hotel_search_params).to_a
+    if params.has_key?(:search)
+      @hotel_available = Hotel.search(hotel_search_params).to_a
+    else
+      @hotel_available = []
+    end
   end
 
   private

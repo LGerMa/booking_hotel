@@ -1,6 +1,9 @@
 class Reservation < ApplicationRecord
   belongs_to :hotel
 
+  before_create :set_total
+  before_update :set_total
+
   scope :reservations_in_date, -> (date = Date.current) {
     where("arrival_date <= ? AND departure_date >= ?", date, date)
   }
@@ -17,4 +20,13 @@ class Reservation < ApplicationRecord
     reservations_in_progress_by_hotel(hotel_id, date).sum(:number_of_rooms)
   }
 
+  def full_name
+    self.first_name+" "+self.last_name
+  end
+
+  private
+
+    def set_total
+      self.total = self.number_of_rooms * self.hotel.price
+    end
 end

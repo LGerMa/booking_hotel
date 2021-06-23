@@ -3,19 +3,25 @@ class Hotel < ApplicationRecord
 
   scope :search, -> (params) {
     #city, arrival_date, departure_date, number_of_rooms, max_price
-    print(params)
     if(params["city"] &&
       params["arrival_date"] &&
       params["number_of_rooms"]
     )
-      by_city(params["city"])
-        .current_available_in_date(params["number_of_rooms"], params["arrival_date"])
+      if(params["max_price"] != "")
+        by_city(params["city"])
+          .lower_than_price(params["max_price"])
+          .current_available_in_date(params["number_of_rooms"], params["arrival_date"])
+      else
+        by_city(params["city"])
+          .current_available_in_date(params["number_of_rooms"], params["arrival_date"])
+      end
     else
       Hotel.all.order(:price)
     end
   }
 
   scope :by_city, -> (city = '') {
+    city = city.downcase
     where("lower(city) LIKE ?", "%"+city+"%")
   }
 
@@ -32,10 +38,9 @@ class Hotel < ApplicationRecord
            "(#{unavailable}) unavailable",
            "number_of_rooms - (#{unavailable}) available"
     )
-      .where('available <= ?', number_of_rooms.to_i)
+      .where('available >= ?', number_of_rooms.to_i)
       .order(:price)
   }
-
 
 
 end

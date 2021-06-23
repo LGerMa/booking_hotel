@@ -4,8 +4,9 @@ Rails.application.routes.draw do
       #get 'search/:q', :action => 'search', :as => 'search'
       get 'search'
     end
-    resources :reservations
   end
+
+  resources :reservations
 
   get '/', to: 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
