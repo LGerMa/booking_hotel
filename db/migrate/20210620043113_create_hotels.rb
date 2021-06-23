@@ -5,6 +5,8 @@ class CreateHotels < ActiveRecord::Migration[6.0]
       t.string :city
       t.integer :number_of_rooms
       t.float :price
+
+      t.timestamps
     end
   end
 end

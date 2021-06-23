@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<h2>Search</h2>
+<%= render 'search' %>
+
+<% if @hotel_available.empty? %>
+<div>sin datos</div>
+<% else %>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>Number of rooms</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <%= pp(@hotel_available) %>
+    <% @hotel_available.each do |hotel| %>
+      <tr>
+        <td><%= hotel.name %></td>
+        <td><%= hotel.city %></td>
+        <td><%= hotel.available %></td>
+        <td><%= hotel.price %></td>
+        <td><%= link_to 'Show', hotel %></td>
+        <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>
+        <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<div class="back">
+  <%= link_to 'Back', hotels_path %>
+</div>

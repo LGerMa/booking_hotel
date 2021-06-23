@@ -1,0 +1,35 @@
+<div class="search_hotel">
+  <%= form_with scope: :search,
+                url: "/hotels/search",
+                local:true,
+                method: :get do |form| %>
+    <div class="row">
+      <div class="four columns">
+        <%= form.label :city, "Search City" %>
+        <%= form.text_field :city, placeholder: "Search city", required: true %>
+      </div>
+      <div class="four columns">
+        <%= form.label :arrival_date, "Enter arrival date" %>
+        <%= form.date_field :arrival_date, min: Date.current, required: true %>
+      </div>
+      <div class="four columns">
+        <%= form.label :departure_date, "Enter departure date" %>
+        <%= form.date_field :departure_date, min: Date.current + 1, required: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="four columns">
+        <%= form.label :number_of_rooms, "Number of rooms" %>
+        <%= form.number_field :number_of_rooms, in: 1..10, value: 1, required: true %>
+      </div>
+      <div class="four columns">
+        <%= form.label :max_price, "Max price" %>
+        <%= form.number_field :max_price,value: 0 %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Search" %>
+    </div>
+  <% end %>
+</div>
