@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong> Client </strong>
+  <%= @reservation.full_name %>
+</p>
+
+<p>
+  <strong> Client Email </strong>
+  <%= @reservation.email %>
+</p>
+
+<p>
   <strong> Hotel Reservation </strong>
   <%= @reservation.hotel.name %>
 </p>
@@ -13,6 +23,21 @@
 <p>
   <strong>Number of rooms:</strong>
   <%= @reservation.number_of_rooms %>
+</p>
+
+<p>
+  <strong>Reservartion date:</strong>
+  <%= @reservation.arrival_date %> <b>to</b> <%= @reservation.departure_date %>
+</p>
+
+<p>
+  <strong>Price per room: </strong>
+  <%= @reservation.price_per_room %>
+</p>
+
+<p>
+  <strong>Total: </strong>
+  <%= @reservation.total %>
 </p>
 
 <!--<%#= link_to 'Edit', edit_reservation_path(@reservation) %> |-->

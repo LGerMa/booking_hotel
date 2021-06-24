@@ -24,6 +24,10 @@ class Reservation < ApplicationRecord
     self.first_name+" "+self.last_name
   end
 
+  def price_per_room
+    self.total / self.number_of_rooms
+  end
+
   private
 
     def set_total

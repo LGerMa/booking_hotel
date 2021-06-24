@@ -1,5 +1,5 @@
-<h2>Reservations list in <%= @hotel.name %></h2>
-
+<h2>Reservations list in hotel</h2>
+<h4><%= @hotel.name %></h4>
 
 <table>
   <thead>
@@ -17,7 +17,7 @@
   <% @hotel.reservations.order(:arrival_date).each do |reservation| %>
     <tr>
       <td><%= reservation.full_name %></td>
-      <td><%= reservation.total / reservation.number_of_rooms %> </td>
+      <td><%= reservation.price_per_room %> </td>
       <td><%= reservation.number_of_rooms %></td>
       <td><%= reservation.total %></td>
       <td><%= reservation.arrival_date %> - <%= reservation.departure_date %> </td>
