@@ -1,1 +1,41 @@
 <h1>Home</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>
+      List Endpoint
+    </th>
+    <th>
+      Description
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <%= link_to 'Hotel List', hotels_path %>
+    </td>
+    <td>
+      List of hotels, here you can create / show / edit hotels also there
+      is a list of reservations per hotel
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to 'Search Hotel', search_hotels_path %>
+    </td>
+    <td>
+      Here you can find hotels to make a booking
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to 'Reservation List', reservations_path %>
+    </td>
+    <td>
+      List of reservation list in general
+    </td>
+  </tr>
+  </tbody>
+</table>
