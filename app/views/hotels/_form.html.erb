@@ -22,16 +22,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :number_of_rooms %>
-    <%= form.text_field :number_of_rooms %>
-  </div>
-
-  <div class="field">
     <%= form.label :price %>
     <%= form.text_field :price %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => 'button button-primary' %>
   </div>
 <% end %>

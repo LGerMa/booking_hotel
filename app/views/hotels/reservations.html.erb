@@ -1,0 +1,31 @@
+<h2>Reservations list in <%= @hotel.name %></h2>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>Client Name</th>
+    <th>Price per room</th>
+    <th>Number of rooms total</th>
+    <th>Total</th>
+    <th>Reservation dates</th>
+    <th>Reservation at</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @hotel.reservations.order(:arrival_date).each do |reservation| %>
+    <tr>
+      <td><%= reservation.full_name %></td>
+      <td><%= reservation.total / reservation.number_of_rooms %> </td>
+      <td><%= reservation.number_of_rooms %></td>
+      <td><%= reservation.total %></td>
+      <td><%= reservation.arrival_date %> - <%= reservation.departure_date %> </td>
+      <td><%= reservation.created_at %></td>
+      <td><%= link_to 'Show', reservation, :class => 'button button-primary' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', hotels_path, :class => 'button' %>

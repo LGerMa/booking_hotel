@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       #get 'search/:q', :action => 'search', :as => 'search'
       get 'search'
+      get ':id/reservations', :action => 'reservations', :as => 'reservations'
     end
   end
 

@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     hotel = Hotel.find(params["hotel_id"])
     hash_params = validate_params_q(params["q"])
     hash_params["hotel_id"] = params["hotel_id"]
-    hash_params["total"] = hash_params["number_of_rooms"].to_i * hotel.price
+    hash_params["total"] = (hash_params["number_of_rooms"].to_i * hotel.price).round(2)
     @reservation = Reservation.new(hash_params)
     @hotel = Hotel.find(params["hotel_id"])
     @messages = {message: ""}
@@ -33,7 +33,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     available = @reservation.hotel.number_of_rooms - Reservation.rooms_unavailable_by_hotel(@reservation.hotel_id, @reservation.arrival_date)
-    if available >= 0 && available <= @reservation.number_of_rooms
+    if available >= 0 && @reservation.number_of_rooms <= available
       respond_to do |format|
         if @reservation.save
           format.html { redirect_to @reservation, notice: "Reservation was successfully created." }
@@ -55,6 +55,8 @@ class ReservationsController < ApplicationController
     end
 
   end
+
+
 
   private
     def set_reservation

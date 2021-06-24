@@ -1,5 +1,5 @@
 class HotelsController < ApplicationController
-  before_action :set_hotel, only: %i[ show edit update destroy ]
+  before_action :set_hotel, only: %i[ show edit update destroy reservations ]
 
   # GET /hotels or /hotels.json
   def index
@@ -62,6 +62,9 @@ class HotelsController < ApplicationController
     else
       @hotel_available = []
     end
+  end
+
+  def reservations
   end
 
   private

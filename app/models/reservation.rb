@@ -27,6 +27,6 @@ class Reservation < ApplicationRecord
   private
 
     def set_total
-      self.total = self.number_of_rooms * self.hotel.price
+      self.total = (self.number_of_rooms * self.hotel.price).round(2)
     end
 end

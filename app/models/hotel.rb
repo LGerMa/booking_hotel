@@ -42,5 +42,13 @@ class Hotel < ApplicationRecord
       .order(:price)
   }
 
+  def rooms_current_reserved
+    Reservation.rooms_unavailable_by_hotel(self.id)
+  end
+
+  def rooms_current_available
+    self.number_of_rooms - Reservation.rooms_unavailable_by_hotel(self.id)
+  end
+
 
 end

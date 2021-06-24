@@ -8,6 +8,7 @@
       <p><b>Hotel</b> <%= @hotel.name %></p>
       <p><b>City</b> <%= @hotel.city %></p>
       <p><b>Price Per Night</b> <%= @hotel.price %></p>
+      <p><b><%= @hotel.number_of_rooms - Reservation.rooms_unavailable_by_hotel(@hotel.id, @reservation.arrival_date) %></b> Rooms available between <%= @reservation.arrival_date %> - <%= @reservation.departure_date %></p>
     </div>
   </div>
 </div>
